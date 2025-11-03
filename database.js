@@ -1,15 +1,13 @@
 
 const mysql = require('mysql2');
+const { database } = require('./config');
 
 // Create a connection pool
 const pool = mysql.createPool({
-  host: 'localhost',
-  user: 'root',
-  password: 'root',
-  database: 'school_management',
+  ...database,
   waitForConnections: true,
   connectionLimit: 10,
-  queueLimit: 0
+  queueLimit: 0,
 });
 
 // Export a promise-wrapped version of the pool
